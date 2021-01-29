@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 @app.route('/number-plate/<media_url>')
 def number_plate(media_url: str):
-    media_url = media_url.replace('secure', 'https').replace('slash', '/').replace('dot', '.').replace('colon', ':').replace('dash', '-').replace('ampersand', '&').replace('per', '%').replace('ques', '?');
+    media_url = media_url.replace('secure', 'https').replace('slash', '/').replace('dot', '.').replace('colon', ':').replace('dash', '-').replace('ampersand', '&').replace('per', '%').replace('ques', '?')
     urlretrieve(media_url, r'D:\prana\Programming\Server\assets\main.png')
     proc = Popen(r'python D:\prana\Programming\Deep-Recognition\plate_recognition.py --api-key None D:\prana\Programming\Server\assets\main.png'.split(), stdin=PIPE, stdout=PIPE, stderr=PIPE)
     output, _ = proc.communicate()
